@@ -940,7 +940,8 @@ def add_employee_data():
         a_date = f'{a_date[6:]}-{a_date[:2]}-{a_date[3:5]}'
 
         # Insert employee into database
-        conn.execute("insert into Employee (first_name, last_name, phone_number, email, hired_date) values (%s, %s, %s, %s, %s)", (a_f_name, a_l_name, a_phone, a_email, a_date))
+        conn.execute("insert into Employee (first_name, last_name, phone_number, email, hired_date) values (%s, %s, %s, %s, %s)",\
+                      (a_f_name, a_l_name, a_phone, a_email, a_date))
         connect.commit()
         destroy_add_employee()
         display_info()
@@ -1282,6 +1283,7 @@ def select_jobs(tree):
             connect.commit()
             mb.showinfo("SUCCESS", "Service removed")
             remove_service_window.destroy()
+            destroy_update()
             display_info()
 
         save_service_button = tk.Button(remove_service_window, text="Save", command=lambda: save_service())
@@ -1417,6 +1419,7 @@ def select_employees(tree):
                     connect.commit()
                     mb.showinfo("SUCCESS", "Job added")
                     add_jobs_window.destroy()
+                    destroy_update()
                     display_info()
 
         save_job_button = tk.Button(add_jobs_window, text="Save", command=lambda: save_job())
@@ -1451,6 +1454,7 @@ def select_employees(tree):
             connect.commit()
             mb.showinfo("SUCCESS", "Job removed")
             remove_jobs_window.destroy()
+            destroy_update()
             display_info()
 
         save_job_button = tk.Button(remove_jobs_window, text="Save", command=lambda: save_job())
@@ -1740,7 +1744,6 @@ def select_locations(tree):
         connect.commit()
         mb.showinfo('SUCCESS', 'Location data updated')
      
-        display_info()
         destroy_update()
         display_info()
 
@@ -1772,6 +1775,7 @@ def select_locations(tree):
                     connect.commit()
                     mb.showinfo("SUCCESS", "Customer added")
                     add_customer_window.destroy()
+                    destroy_update()
                     display_info()
 
         save_customer_button = tk.Button(add_customer_window, text="Save", command=lambda: save_customer())
@@ -1806,6 +1810,7 @@ def select_locations(tree):
             connect.commit()
             mb.showinfo("SUCCESS", "Customer removed")
             remove_customer_window.destroy()
+            destroy_update()
             display_info()
 
         save_customer_button = tk.Button(remove_customer_window, text="Save", command=lambda: save_customer())
@@ -1873,7 +1878,6 @@ def select_services(tree):
         connect.commit()
         mb.showinfo('SUCCESS', 'Service data updated')
      
-        display_info()
         destroy_update()
         display_info()
 
